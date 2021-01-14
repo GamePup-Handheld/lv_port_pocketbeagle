@@ -1,0 +1,7 @@
+#!/usr/bin/expect -f
+#!/bin/bash
+spawn sudo ./demo
+expect "\[sudo\] password for debian: "
+send "temppwd\r"
+interact
+sleep 1
