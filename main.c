@@ -6,6 +6,9 @@
 #include <time.h>
 #include <sys/time.h>
 #include "lv_examples/src/lv_ex_get_started/lv_ex_get_started.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
 #define DISP_BUF_SIZE (LV_VER_RES_MAX* LV_HOR_RES_MAX)
 
 
@@ -21,6 +24,9 @@ void lv_ex_get_started_1(void);
 
 int main(void)
 {
+    //system("sudo echo 0 | sudo tee -a /sys/class/graphics/fbcon/cursor_blink");
+    int fd = open("/sys/class/graphics/fbcon/cursor_blink", O_WRONLY);
+    write(fd, "0", 1);
     /*LittlevGL init*/
     lv_init();
 
