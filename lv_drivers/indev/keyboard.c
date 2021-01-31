@@ -52,6 +52,8 @@ void keyboard_init(void)
  */
 bool keyboard_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
 {
+
+    printf("yo im'reading the keyboard\n");
     (void) indev_drv;      /*Unused*/
     data->state = state;
     data->key = keycode_to_ascii(last_key);
@@ -65,6 +67,7 @@ bool keyboard_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
  */
 void keyboard_handler(SDL_Event * event)
 {
+     printf("yo im in the keyboard handler\n");
     /* We only care about SDL_KEYDOWN and SDL_KEYUP events */
     switch(event->type) {
         case SDL_KEYDOWN:                       /*Button press*/

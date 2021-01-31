@@ -12,7 +12,7 @@
 #define DISP_BUF_SIZE (LV_VER_RES_MAX* LV_HOR_RES_MAX)
 
 
-#include "lv_drivers/indev/keyboard.h"
+#include "lv_drivers/indev/evdev.h"
 #include "lv_drivers/indev/mousewheel.h"
 
 
@@ -77,14 +77,16 @@ void lv_ex_get_started_1(void)
         lv_theme_get_font_small(), lv_theme_get_font_normal(), lv_theme_get_font_subtitle(), lv_theme_get_font_title());
      g = lv_group_create();
 
-#if LV_EX_KEYBOARD
+
+
+ 	evdev_init();    
     lv_indev_drv_t kb_drv;
     lv_indev_drv_init(&kb_drv);
     kb_drv.type = LV_INDEV_TYPE_KEYPAD;
-    kb_drv.read_cb = keyboard_read;
+    kb_drv.read_cb = evdev_read;
     lv_indev_t * kb_indev = lv_indev_drv_register(&kb_drv);
     lv_indev_set_group(kb_indev, g);
-#endif
+
 
     lv_obj_reset_style_list(lv_layer_top(), LV_OBJ_PART_MAIN);
     lv_obj_set_click(lv_layer_top(), false);
@@ -104,7 +106,6 @@ void lv_ex_get_started_1(void)
     lv_obj_set_event_cb(roller, roller_event_cb);
     lv_group_add_obj(g, roller);
 }
-
 
 
 /*Set in lv_conf.h as `LV_TICK_CUSTOM_SYS_TIME_EXPR`*/
