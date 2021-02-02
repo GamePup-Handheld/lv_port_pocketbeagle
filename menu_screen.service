@@ -1,0 +1,25 @@
+[Unit]
+Description=ADVMAME
+After=systemd-user-sessions.service
+After=rc-local.service
+IgnoreOnIsolate=yes
+
+[Service]
+#User=debian
+ExecStart=/var/lib/cloud9/lv_port_pocketbeagle/demo
+Type=idle
+-Restart=always
+RestartSec=10
+UtmpIdentifier=tty1
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+KillMode=process
+IgnoreSIGPIPE=no
+SendSIGHUP=yes
+Environment=LANG= LANGUAGE= LC_CTYPE= LC_NUMERIC= LC_TIME= LC_COLLATE= LC_MONETARY= LC_MESSAGES= LC_PAPER= LC_NAME= LC_ADDRESS= LC_TELEPHONE= LC_MEASUREMENT= LC_IDENTIFICATION= FRAMEBUFFER=/dev/fb0 HOME=/home/debian
+
+[Install]
+WantedBy=multi-user.target
+

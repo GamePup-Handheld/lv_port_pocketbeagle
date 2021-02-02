@@ -19,6 +19,9 @@
 static lv_group_t*  g;
 static lv_obj_t* roller;
 
+static lv_indev_drv_t kb_drv;
+static lv_disp_drv_t disp_drv;
+
 typedef struct coordinates
 {
     int x;
@@ -49,7 +52,6 @@ int main(void)
     lv_disp_buf_init(&disp_buf, buf, NULL, DISP_BUF_SIZE);
 
     /*Initialize and register a display driver*/
-    lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);
     disp_drv.buffer   = &disp_buf;
     disp_drv.flush_cb = fbdev_flush;
@@ -70,17 +72,12 @@ int main(void)
 
 void lv_ex_get_started_1(void)
 {
-
-
      LV_THEME_DEFAULT_INIT(lv_theme_get_color_primary(), lv_theme_get_color_primary(),
         LV_THEME_MATERIAL_FLAG_DARK,
         lv_theme_get_font_small(), lv_theme_get_font_normal(), lv_theme_get_font_subtitle(), lv_theme_get_font_title());
      g = lv_group_create();
 
-
-
- 	evdev_init();    
-    lv_indev_drv_t kb_drv;
+ 	evdev_init(); 
     lv_indev_drv_init(&kb_drv);
     kb_drv.type = LV_INDEV_TYPE_KEYPAD;
     kb_drv.read_cb = evdev_read;
@@ -137,17 +134,24 @@ static void roller_event_cb(lv_obj_t* obj, lv_event_t event)
            char command[50];
            strcpy( command, "/home/debian/advmame_pacman.sh" );
            system(command);
+           strcpy( command, "/var/lib/cloud9/lv_port_pocketbeagle/demo" );
+           system(command);
         }
         
         else if (strcmp(buf, "Robby") == 0) {
            char command[50];
            strcpy( command, "/home/debian/advmame_robby.sh" );
            system(command);
+           strcpy( command, "/var/lib/cloud9/lv_port_pocketbeagle/demo" );
+           system(command);
+           return;
         }
         
         else if (strcmp(buf, "Gridlee") == 0) {
            char command[50];
            strcpy( command, "/home/debian/advmame_gridlee.sh" );
+           system(command);
+           strcpy( command, "/var/lib/cloud9/lv_port_pocketbeagle/demo" );
            system(command);
         }
         
@@ -155,17 +159,23 @@ static void roller_event_cb(lv_obj_t* obj, lv_event_t event)
            char command[50];
            strcpy( command, "/home/debian/advmame_carpolo.sh" );
            system(command);
+           strcpy( command, "/var/lib/cloud9/lv_port_pocketbeagle/demo" );
+           system(command);
         }
         
         else if (strcmp(buf, "Polyplay") == 0) {
            char command[50];
            strcpy( command, "/home/debian/advmame_polyplay.sh" );
            system(command);
+           strcpy( command, "/var/lib/cloud9/lv_port_pocketbeagle/demo" );
+           system(command);
         }
         
         else if (strcmp(buf, "Mad Gear") == 0) {
            char command[50];
-           strcpy( command, "/home/debian/advmame_madgear.sh" );
+           strcpy(command, "/home/debian/advmame_madgear.sh" );
+           system(command);
+           strcpy( command, "/var/lib/cloud9/lv_port_pocketbeagle/demo" );
            system(command);
         }
     }
