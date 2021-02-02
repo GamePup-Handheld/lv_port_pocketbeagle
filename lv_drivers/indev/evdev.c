@@ -50,7 +50,7 @@ int evdev_key_val;
  */
 void evdev_init(void)
 {
-    printf("Currently in: Evdev init function\n");
+    //printf("Currently in: Evdev init function\n");
 
     evdev_fd = open(EVDEV_NAME, O_RDWR | O_NOCTTY | O_NDELAY);
     if(evdev_fd == -1) {
@@ -100,7 +100,7 @@ bool evdev_set_file(char* dev_name)
 bool evdev_read(lv_indev_drv_t * drv, lv_indev_data_t * data)
 {
 
-  printf("Currently in: Evdev read function\n");
+  //printf("Currently in: Evdev read function\n");
     struct input_event in;
 
     while(read(evdev_fd, &in, sizeof(struct input_event)) > 0) {
