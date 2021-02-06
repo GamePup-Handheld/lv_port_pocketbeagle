@@ -206,6 +206,32 @@ static void roller_event_cb(lv_obj_t* obj, lv_event_t event)
         char buf[32];
         lv_roller_get_selected_str(obj, buf, sizeof(buf));
         
+        
+        if (!(strcmp(buf, "R-type"))) {
+            strcpy(buf, "rtype2");
+        }
+        
+        else if (!(strcmp(buf, "Tetris"))) {
+            strcpy(buf, "mosaic");
+        }
+        
+        else if (!(strcmp(buf, "Road Runner"))) {
+            strcpy(buf, "roadrunn");
+        }
+        
+        else if (!(strcmp(buf, "Donkey Kong"))) {
+            strcpy(buf, "dkong");
+        }
+        
+        else if (!(strcmp(buf, "Play Ball"))) {
+            strcpy(buf, "playball");
+        }
+        
+        else if (!(strcmp(buf, "Brick Breaker"))) {
+            strcpy(buf, "arknoid2");
+        }
+        
+        
         int i;
         for(i=0;i<=strlen(buf);i++){
               if(buf[i]>=65&&buf[i]<=90)
