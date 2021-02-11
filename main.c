@@ -36,8 +36,6 @@ void lv_ex_get_started_1(void);
 
 int find_roms(char *games);
 
-
-
 char games_list[500] = "";
 
 int find_roms(char *games) {
@@ -168,7 +166,8 @@ void lv_ex_get_started_1(void)
     lv_obj_reset_style_list(lv_layer_top(), LV_OBJ_PART_MAIN);
     lv_obj_set_click(lv_layer_top(), false);
     lv_event_send(lv_scr_act(), LV_EVENT_REFRESH, NULL);
-
+    
+    
     roller = lv_roller_create(lv_scr_act(), NULL);
 
     lv_roller_set_auto_fit(roller, false);
@@ -178,6 +177,14 @@ void lv_ex_get_started_1(void)
     lv_roller_set_options(roller, games_list, LV_ROLLER_MODE_NORMAL);
     lv_obj_set_event_cb(roller, roller_event_cb);
     lv_group_add_obj(g, roller);
+    
+    
+    lv_obj_t * m = lv_msgbox_create(lv_scr_act(), NULL);
+    lv_obj_set_pos(m, 0, 0);
+    lv_obj_set_height(m, 160);
+    lv_msgbox_set_text(m, "\n\nWelcome to PocketBeagle\n\n\n\n");
+    lv_msgbox_start_auto_close(m, 5000);
+    
 }
 
 
