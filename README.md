@@ -11,3 +11,5 @@ When cloning this repository, also make sure to download submodules (`git clone 
 
 Check out this blog post for a step by step tutorial:
 https://blog.lvgl.io/2018-01-03/linux_fb
+
+For further instructions and resources, please look at the file "Useful Links.docx".
